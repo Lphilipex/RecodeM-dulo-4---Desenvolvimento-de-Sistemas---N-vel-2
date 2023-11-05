@@ -1,0 +1,35 @@
+
+CREATE DATABASE AgenciaDeViagens;
+
+
+USE AgenciaDeViagens;
+
+
+CREATE TABLE Clientes (
+    ID_Cliente INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(50),
+    Sobrenome VARCHAR(50),
+    Email VARCHAR(100),
+    Telefone VARCHAR(15)
+);
+
+
+
+CREATE TABLE Viagens (
+    ID_Viagem INT AUTO_INCREMENT PRIMARY KEY,
+    Destino VARCHAR(100),
+    DataPartida DATE,
+    DataRetorno DATE,
+    Preco DECIMAL(10, 2),
+    VagasDisponiveis INT
+);
+
+
+CREATE TABLE Reservas (
+    ID_Reserva INT AUTO_INCREMENT PRIMARY KEY,
+    ID_Cliente INT,
+    ID_Viagem INT,
+    DataReserva DATE,
+    FOREIGN KEY (ID_Cliente) REFERENCES Clientes(ID_Cliente),
+    FOREIGN KEY (ID_Viagem) REFERENCES Viagens(ID_Viagem)
+);
